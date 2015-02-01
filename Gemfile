@@ -11,6 +11,7 @@ gem "flutie"
 gem "high_voltage"
 gem "i18n-tasks"
 gem "jquery-rails"
+gem "monban"
 gem "neat", "~> 1.7.0"
 gem "newrelic_rpm"
 gem "normalize-rails", "~> 3.0.0"
@@ -24,6 +25,7 @@ gem "simple_form"
 gem "title"
 gem "uglifier"
 gem "unicorn"
+gem 'monban-generators'
 
 group :development do
   gem "spring"
