@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   constraints Monban::Constraints::SignedOut.new do
     root "sessions#new"
   end
+
+  resources :groups, only: [:new, :create, :show]
 end
