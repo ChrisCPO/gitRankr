@@ -7,4 +7,8 @@ class Group < ActiveRecord::Base
   def add_user(new_user)
     users << new_user
   end
+
+  def remove_member(member)
+    users.destroy(member)
+  end
 end
