@@ -1,5 +1,8 @@
-<div>
-  <h1> Groups </h1>
-  <%= link_to "Create Group", new_group_path %>
-  <%= render @groups %>
+<h1> Groups </h1>
+<%= link_to "Create Group", new_group_path %>
+
+<div class="groups">
+  <ul>
+    <%= render @groups %>
+  </ul>
 </div>
