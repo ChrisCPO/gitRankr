@@ -1,4 +1,5 @@
 <li>
-  <%= link_to group.name, group_path(group) %>
-  <p> Members: <%= group.users.length %>
+  <h3><%= link_to group.name, group_path(group) %></h3>
+  <p><%= group.description %></p>
+  <p> Members: <%= group.users.length %></p>
 </li>

@@ -16,6 +16,8 @@
     <%= link_to "Sign in", new_session_path %>
     <%= link_to "Sign up", new_user_path %>
   <% end %>
+
+  <%= render partial: "searches/search_bar" %>
 </head>
 
 <body class="<%= body_class %>">

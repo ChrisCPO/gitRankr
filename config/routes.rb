@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     root "sessions#new"
   end
 
+  resource :search, only: [:show]
   resources :groups, only: [:new, :create, :show, :index] do
     resource :membership, only: [:new, :create, :destroy]
   end
