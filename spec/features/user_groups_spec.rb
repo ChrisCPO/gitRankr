@@ -52,11 +52,21 @@ feature "Group" do
     group = create(:group)
 
     sign_in(user)
-    visit dashboard_path
     visit group_path(group)
     click_link "Join Group"
 
     expect(page).to have_text("Leave Group")
     expect(group.users).to include user
+  end
+
+  scenario "user can see all members of that group" do
+    user = create(:user)
+    group = create(:group)
+
+    sign_in(user)
+    group.users << user
+    visit group_path(group)
+
+    expect(page).to have_text(user.email)
   end
 end
