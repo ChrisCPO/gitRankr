@@ -8,3 +8,14 @@
     <%= link_to "Join Group", new_group_membership_path(@group) %>
   <% end %>
 </div>
+
+<aside>
+  <fieldset>
+    <h3> Members </h3>
+    <div class="members">
+      <ul>
+        <%= render @group.users, paginate: true %>
+      </ul>
+    </div>
+  </fieldset>
+</aside>
