@@ -6,12 +6,11 @@
     <%= link_to "Sign Up", new_user_path %>
   </p>
 </div>
-<div>
-
 
 <%= form_for :session, url: session_path do |form| %>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
+  <div>
+    <%= form.label :username %>
+    <%= form.text_field :username %>
   </div>
   <div>
     <%= form.label :password %>
