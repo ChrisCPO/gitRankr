@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     root "sessions#new"
   end
 
-  resources :groups, only: [:new, :create, :show]
+  resources :groups, only: [:new, :create, :show, :index] do
+    resource :membership, only: [:new, :create, :destroy]
+  end
 end

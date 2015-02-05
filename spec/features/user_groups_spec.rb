@@ -28,4 +28,35 @@ feature "Group" do
 
     expect(page).to have_text(group.name)
   end
+
+  scenario "user can leave a group they are part of" do
+    user = create(:user)
+    group = create(:group)
+
+    sign_in(user)
+    group.users << user
+    visit dashboard_path
+    click_link group.name
+    click_link "Leave Group"
+
+    expect(page).to have_text("Join Group")
+    expect(user.member?(group)).to eq false
+
+    group.remove_member(user)
+    expect(group.users.length).to eq 0
+    expect(group.users).not_to include user
+  end
+
+  scenario "user can join a group" do
+    user = create(:user)
+    group = create(:group)
+
+    sign_in(user)
+    visit dashboard_path
+    visit group_path(group)
+    click_link "Join Group"
+
+    expect(page).to have_text("Leave Group")
+    expect(group.users).to include user
+  end
 end
