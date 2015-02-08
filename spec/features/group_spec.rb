@@ -15,6 +15,8 @@ feature "Group" do
 
     expect(page).to have_text(group_name)
     expect(page).to have_text(group_description)
+    expect(page).to have_text(user.username)
+    expect(page).to have_text("Admin")
   end
 
   scenario "user can view groups they are members of" do
@@ -67,6 +69,6 @@ feature "Group" do
     group.users << user
     visit group_path(group)
 
-    expect(page).to have_text(user.email)
+    expect(page).to have_text(user.username)
   end
 end

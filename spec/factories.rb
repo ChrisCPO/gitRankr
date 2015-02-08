@@ -1,9 +1,15 @@
 FactoryGirl.define do
-  factory :group_membership do
+  factory :admin do
+  end
+
+  factory :membership do
+    user
+    group
   end
 
   factory :user do
-    email "wombat@testing.com"
+    sequence(:username){ |n| "wombat_#{n}" }
+    sequence(:email){ |n| "wombat_#{n}@testing.com" }
     password_digest "password"
   end
 

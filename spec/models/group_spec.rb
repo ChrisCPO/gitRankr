@@ -22,4 +22,18 @@ RSpec.describe Group, type: :model do
       expect(group.users).not_to include user
     end
   end
+
+  describe "#non_admin_users" do
+    it "lists non admin members" do
+      group = create(:group)
+      user_one = create(:user)
+      user_two = create(:user)
+
+      group.users << user_one
+      group.memberships[0].admin = true
+      group.users << user_two
+
+      expect(group.non_admin_users).not_to include user_one
+    end
+  end
 end
