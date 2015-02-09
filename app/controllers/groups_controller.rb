@@ -12,6 +12,8 @@ class GroupsController < ApplicationController
     @group.add_user(current_user)
 
     if @group.save
+      membership = @group.memberships.take
+      membership.make_admin
       redirect_to @group
     else
       render :new

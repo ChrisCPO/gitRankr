@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :username, presence: true, uniqueness: true
 
-  has_many :group_memberships
-  has_many :groups, through: :group_memberships
+  has_many :memberships
+  has_many :groups, through: :memberships
 
   def member?(group)
     group.users.include?(self)

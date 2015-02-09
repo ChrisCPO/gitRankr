@@ -14,7 +14,10 @@
     <h3> Members </h3>
     <div class="members">
       <ul>
-        <%= render @group.users, paginate: true %>
+        <%= render partial: "users/admin", collection: @group.admins %>
+      </ul>
+      <ul>
+        <%= render @group.non_admin_users, locals: {group: @group} %>
       </ul>
     </div>
   </fieldset>
