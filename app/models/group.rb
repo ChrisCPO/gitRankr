@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
   has_many :users, through: :memberships
 
   has_many :admin_memberships, -> { where admin: true },
-                                    class_name: "Membership"
+                                     class_name: "Membership"
   has_many :admins, through: :admin_memberships, source: "user"
 
   def add_user(new_user)
