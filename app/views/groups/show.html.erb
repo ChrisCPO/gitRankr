@@ -5,7 +5,7 @@
   <% if current_user.member?(@group) %>
     <%= link_to "Leave Group", group_membership_path(@group), method: :delete %>
   <% else %>
-    <%= link_to "Join Group", new_group_membership_path(@group) %>
+    <%= link_to "Join Group", group_membership_path(@group), method: :post %>
   <% end %>
 </div>
 

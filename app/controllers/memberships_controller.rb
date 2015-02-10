@@ -1,13 +1,13 @@
 class MembershipsController < ApplicationController
   before_action :user_belongs_to_group, only: [:destroy]
   def new
+  end
+
+  def create
     @group = find_group
     @group.add_user(current_user)
 
     redirect_to @group
-  end
-
-  def create
   end
 
   def destroy
