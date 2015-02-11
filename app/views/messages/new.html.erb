@@ -1,0 +1,13 @@
+<h1> New Message </h1>
+
+<%= render partial: "form_errors/errors", locals: {object: @message} %>
+
+<div>
+  <%= form_for @message, url: group_messages_url(@message.group) do |f| %>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+
+    <%= f.submit "Post" %>
+
+  <% end %>
+</div>

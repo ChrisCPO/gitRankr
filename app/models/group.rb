@@ -1,6 +1,8 @@
 class Group < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
+  has_many :messages
+
   has_many :memberships
   has_many :users, through: :memberships
 
@@ -18,5 +20,9 @@ class Group < ActiveRecord::Base
 
   def non_admin_users
     users - admins
+  end
+
+  def messages_desc
+    messages.order(:created_at)
   end
 end

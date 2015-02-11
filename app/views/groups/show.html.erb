@@ -22,3 +22,9 @@
     </div>
   </fieldset>
 </aside>
+
+<%= link_to "New Message", new_group_message_path(@group) %>
+
+<div>
+  <%= render @group.messages_desc %>
+</div>

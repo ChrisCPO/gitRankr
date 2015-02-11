@@ -71,4 +71,18 @@ feature "Group" do
 
     expect(page).to have_text(user.username)
   end
+
+  scenario "user can post message to group" do
+    user = create(:user)
+    group = create(:group)
+
+    sign_in(user)
+    visit group_path(group)
+    message = "I love pancakes"
+    click_link "New Message"
+    fill_in "Content", with: message
+    click_button "Post"
+
+    expect(page).to have_text(message)
+  end
 end
