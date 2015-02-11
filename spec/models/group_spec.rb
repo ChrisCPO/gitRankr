@@ -11,6 +11,23 @@ RSpec.describe Group, type: :model do
       expect(group.users).to include user
     end
   end
+
+  describe "#messages_desc" do
+    it "displays messages in desc order" do
+      group = create(:group)
+      message_1 = create(:message)
+      sleep(1)
+      message_2 = create(:message)
+      group.messages << message_2
+      group.messages << message_1
+      messages = [message_1, message_2]
+
+      10.times do
+        expect(group.messages_desc).to eq messages
+      end
+    end
+  end
+
   describe "#remove_user" do
     it "groups can remove users" do
       group = create(:group)

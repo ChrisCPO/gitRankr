@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :username, presence: true, uniqueness: true
 
+  has_many :messages
+
   has_many :memberships
   has_many :groups, through: :memberships
 

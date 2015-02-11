@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :message do
+    sequence(:content) { |n| "message_#{n}" }
+  end
+
   factory :admin do
   end
 
