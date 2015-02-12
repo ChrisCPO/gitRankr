@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
   def member?(group)
     group.users.include?(self)
   end
+
+  def admin_of_group?(group)
+    membership = Membership.where(user: self, group: group).first
+    membership.admin?
+  end
 end

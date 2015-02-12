@@ -19,6 +19,24 @@ feature "Group" do
     expect(page).to have_text("Admin")
   end
 
+  scenario "admin can remove messages" do
+    user = create(:user)
+    group = create(:group)
+    sign_in(user)
+    message = create(:message)
+    group.add_user(user)
+    group.messages << message
+    user.messages << message
+    membership = Membership.where(user: user, group: group).first
+    membership.make_admin
+
+    visit group_path(group)
+    click_button "Remove Message"
+
+    expect(user.groups).to include group
+    expect(page).not_to have_text(message)
+  end
+
   scenario "user can view groups they are members of" do
     user = create(:user)
     group = create(:group)
@@ -77,6 +95,7 @@ feature "Group" do
     group = create(:group)
 
     sign_in(user)
+    group.add_user(user)
     visit group_path(group)
     message = "I love pancakes"
     click_link "New Message"
