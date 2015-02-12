@@ -1,2 +1,5 @@
 <h5><%= message.user.username %> </h5>
+<% if current_user.admin_of_group?(group) %>
+  <%= button_to "Remove Message", group_message_path(group, message), method: :delete %>
+<% end %>
 <%= message.content %>

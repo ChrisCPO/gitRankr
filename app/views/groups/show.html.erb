@@ -26,5 +26,5 @@
 <%= link_to "New Message", new_group_message_path(@group) %>
 
 <div>
-  <%= render @group.messages_desc %>
+  <%= render partial: @group.messages_desc, locals: {group: @group} %>
 </div>
