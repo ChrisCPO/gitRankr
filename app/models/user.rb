@@ -13,7 +13,17 @@ class User < ActiveRecord::Base
   end
 
   def admin_of_group?(group)
-    membership = Membership.where(user: self, group: group).first
+    membership = find_membership(group)
     membership.admin?
+  end
+
+  def group_membership(group)
+    find_membership(group)
+  end
+
+  private
+
+  def find_membership(group)
+    Membership.where(user: self, group: group).first
   end
 end
