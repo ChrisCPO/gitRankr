@@ -22,4 +22,17 @@ RSpec.describe User, type: :model do
       expect(user.admin_of_group?(group)).to eq true
     end
   end
+
+  describe "#group_membership" do
+    it "returns correct membership" do
+      group = create(:group)
+      user = create(:user)
+
+      group.add_user(user)
+      membership = Membership.where(user: user, group: group).first
+      membership.make_admin
+
+      expect(user.group_membership(group)).to eq membership
+    end
+  end
 end

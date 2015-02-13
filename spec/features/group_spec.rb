@@ -37,6 +37,22 @@ feature "Group" do
     expect(page).not_to have_text(message)
   end
 
+  scenario "admin can kick users" do
+    user = create(:user)
+    user_2 = create(:user)
+    group = create(:group)
+    sign_in(user)
+    group.add_user(user)
+    group.add_user(user_2)
+    membership = Membership.where(user: user, group: group).first
+    membership.make_admin
+
+    visit group_path(group)
+    click_button "Kick User"
+
+    expect(group.users).not_to include user_2
+  end
+
   scenario "user can view groups they are members of" do
     user = create(:user)
     group = create(:group)

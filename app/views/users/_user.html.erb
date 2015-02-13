@@ -1,1 +1,4 @@
 <%= user.username %>
+<% if current_user.admin_of_group?(group) %>
+  <%= button_to "Kick User", group_membership_path(group, user.group_membership(@group)), method: :delete %>
+<% end %>
