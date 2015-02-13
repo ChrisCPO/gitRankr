@@ -19,7 +19,7 @@ class Group < ActiveRecord::Base
   end
 
   def non_admin_users
-    users - admins
+    admins - users
   end
 
   def messages_desc
