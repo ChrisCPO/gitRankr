@@ -23,7 +23,6 @@ RSpec.describe User, type: :model do
     end
   end
 
-
   describe "#group_membership" do
     it "returns correct membership" do
       group = create(:group)
