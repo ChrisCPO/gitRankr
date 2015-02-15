@@ -1,0 +1,19 @@
+.message {
+  text-align: left;
+  margin-top: 1em;
+  margin-left: 3em;
+  border-bottom: 1px solid transparentize(black, 0.9);
+
+
+  .message-header {
+    display: inline;
+
+    .h {
+    }
+
+    .button{
+      display: inline;
+      float: center;
+    }
+  }
+}
